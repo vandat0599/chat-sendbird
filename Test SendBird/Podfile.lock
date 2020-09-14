@@ -1,0 +1,29 @@
+PODS:
+  - KRActivityIndicatorView (3.0.5)
+  - KRProgressHUD (3.4.5):
+    - KRActivityIndicatorView (= 3.0.5)
+  - SendBirdSDK (3.0.201)
+  - SendBirdUIKit (1.2.1):
+    - SendBirdSDK (~> 3.0.200)
+
+DEPENDENCIES:
+  - KRProgressHUD
+  - SendBirdSDK
+  - SendBirdUIKit
+
+SPEC REPOS:
+  trunk:
+    - KRActivityIndicatorView
+    - KRProgressHUD
+    - SendBirdSDK
+    - SendBirdUIKit
+
+SPEC CHECKSUMS:
+  KRActivityIndicatorView: 912bc0413d98340f384b12a4e1e6aa8f42fb377d
+  KRProgressHUD: df4cdc3a1baf708d4276a089ee34d133fa9a6f3e
+  SendBirdSDK: 3a949f75cb359c0996f23cef3273db0bfb2f26e6
+  SendBirdUIKit: dadeee0fa38f0c78253b1024f9820e507ceaa4a3
+
+PODFILE CHECKSUM: 88b71925627195b2084c2a0f7814301fcece093d
+
+COCOAPODS: 1.8.4

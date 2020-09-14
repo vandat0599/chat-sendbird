@@ -1,0 +1,501 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8F9C777BCA523081BCF9A2D1 /* Pods_Test_SendBird.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9652F30151F8DB28643F8816 /* Pods_Test_SendBird.framework */; };
+		CE33CCF6250CC26900BD73BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CCF5250CC26900BD73BC /* AppDelegate.swift */; };
+		CE33CCFA250CC26900BD73BC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CCF9250CC26900BD73BC /* HomeVC.swift */; };
+		CE33CCFF250CC26B00BD73BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE33CCFE250CC26B00BD73BC /* Assets.xcassets */; };
+		CE33CD02250CC26B00BD73BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE33CD00250CC26B00BD73BC /* LaunchScreen.storyboard */; };
+		CE33CD0B250CC91A00BD73BC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CD0A250CC91A00BD73BC /* Utils.swift */; };
+		CE33CD17250CECDE00BD73BC /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CD16250CECDE00BD73BC /* UITableView+.swift */; };
+		CE33CD19250CED0000BD73BC /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CD18250CED0000BD73BC /* NSObject+.swift */; };
+		CE33CD1B250DE88400BD73BC /* UserDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CD1A250DE88400BD73BC /* UserDefaultHelper.swift */; };
+		CE33CD1D250DE9AC00BD73BC /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CD1C250DE9AC00BD73BC /* LoginVC.swift */; };
+		CE33CD1F250DFA5200BD73BC /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE33CD1E250DFA5200BD73BC /* Storyboard.storyboard */; };
+		CE33CD21250E5A2F00BD73BC /* SBConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CD20250E5A2F00BD73BC /* SBConnectionManager.swift */; };
+		CE33CD23250E765300BD73BC /* GroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CD22250E765300BD73BC /* GroupVC.swift */; };
+		CE33CD25250E766400BD73BC /* OpenChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CD24250E766400BD73BC /* OpenChannelVC.swift */; };
+		CE33CD29250E89E600BD73BC /* SBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CD28250E89E600BD73BC /* SBManager.swift */; };
+		CE33CD2D250E9AE700BD73BC /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CD2C250E9AE700BD73BC /* ChatVC.swift */; };
+		CE88A7F0250F1E6600F5CCC5 /* CustomSBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7EF250F1E6600F5CCC5 /* CustomSBUser.swift */; };
+		CE88A7F2250F553300F5CCC5 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7F1250F553300F5CCC5 /* UITextField+.swift */; };
+		CE88A7F4250F6AD900F5CCC5 /* MessageCellAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7F3250F6AD900F5CCC5 /* MessageCellAdmin.swift */; };
+		CE88A7F6250F76FF00F5CCC5 /* MessageCellUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7F5250F76FF00F5CCC5 /* MessageCellUser.swift */; };
+		CE88A7F8250F77D400F5CCC5 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7F7250F77D400F5CCC5 /* MessageCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		693A5030C5440BB00954A260 /* Pods-Test SendBird.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test SendBird.debug.xcconfig"; path = "Target Support Files/Pods-Test SendBird/Pods-Test SendBird.debug.xcconfig"; sourceTree = "<group>"; };
+		9652F30151F8DB28643F8816 /* Pods_Test_SendBird.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test_SendBird.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE33CCF2250CC26900BD73BC /* Test SendBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Test SendBird.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE33CCF5250CC26900BD73BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CE33CCF9250CC26900BD73BC /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		CE33CCFE250CC26B00BD73BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE33CD01250CC26B00BD73BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE33CD03250CC26B00BD73BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE33CD0A250CC91A00BD73BC /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		CE33CD16250CECDE00BD73BC /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
+		CE33CD18250CED0000BD73BC /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
+		CE33CD1A250DE88400BD73BC /* UserDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
+		CE33CD1C250DE9AC00BD73BC /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		CE33CD1E250DFA5200BD73BC /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		CE33CD20250E5A2F00BD73BC /* SBConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBConnectionManager.swift; sourceTree = "<group>"; };
+		CE33CD22250E765300BD73BC /* GroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupVC.swift; sourceTree = "<group>"; };
+		CE33CD24250E766400BD73BC /* OpenChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelVC.swift; sourceTree = "<group>"; };
+		CE33CD28250E89E600BD73BC /* SBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBManager.swift; sourceTree = "<group>"; };
+		CE33CD2C250E9AE700BD73BC /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		CE88A7EF250F1E6600F5CCC5 /* CustomSBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSBUser.swift; sourceTree = "<group>"; };
+		CE88A7F1250F553300F5CCC5 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		CE88A7F3250F6AD900F5CCC5 /* MessageCellAdmin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellAdmin.swift; sourceTree = "<group>"; };
+		CE88A7F5250F76FF00F5CCC5 /* MessageCellUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellUser.swift; sourceTree = "<group>"; };
+		CE88A7F7250F77D400F5CCC5 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		D6B91B7E1B65D97468A528C4 /* Pods-Test SendBird.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test SendBird.release.xcconfig"; path = "Target Support Files/Pods-Test SendBird/Pods-Test SendBird.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE33CCEF250CC26900BD73BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F9C777BCA523081BCF9A2D1 /* Pods_Test_SendBird.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1BE539779A7D97CF512A9D46 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9652F30151F8DB28643F8816 /* Pods_Test_SendBird.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BA69B8DBF5717F2F9027309A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				693A5030C5440BB00954A260 /* Pods-Test SendBird.debug.xcconfig */,
+				D6B91B7E1B65D97468A528C4 /* Pods-Test SendBird.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CE33CCE9250CC26900BD73BC = {
+			isa = PBXGroup;
+			children = (
+				CE33CCF4250CC26900BD73BC /* Test SendBird */,
+				CE33CCF3250CC26900BD73BC /* Products */,
+				BA69B8DBF5717F2F9027309A /* Pods */,
+				1BE539779A7D97CF512A9D46 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CE33CCF3250CC26900BD73BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE33CCF2250CC26900BD73BC /* Test SendBird.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE33CCF4250CC26900BD73BC /* Test SendBird */ = {
+			isa = PBXGroup;
+			children = (
+				CE33CD15250CECD000BD73BC /* Extension */,
+				CE33CD09250CC8CB00BD73BC /* Utils */,
+				CE33CCFE250CC26B00BD73BC /* Assets.xcassets */,
+				CE33CD03250CC26B00BD73BC /* Info.plist */,
+				CE33CCF5250CC26900BD73BC /* AppDelegate.swift */,
+				CE33CD00250CC26B00BD73BC /* LaunchScreen.storyboard */,
+				CE33CD1E250DFA5200BD73BC /* Storyboard.storyboard */,
+				CE33CD0F250CD1F700BD73BC /* Sendbird */,
+				CE33CD1C250DE9AC00BD73BC /* LoginVC.swift */,
+				CE33CCF9250CC26900BD73BC /* HomeVC.swift */,
+				CE33CD26250E7F0200BD73BC /* Group */,
+				CE33CD27250E7F1000BD73BC /* OpenChannel */,
+			);
+			path = "Test SendBird";
+			sourceTree = "<group>";
+		};
+		CE33CD09250CC8CB00BD73BC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CE33CD0A250CC91A00BD73BC /* Utils.swift */,
+				CE33CD1A250DE88400BD73BC /* UserDefaultHelper.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CE33CD0F250CD1F700BD73BC /* Sendbird */ = {
+			isa = PBXGroup;
+			children = (
+				CE33CD20250E5A2F00BD73BC /* SBConnectionManager.swift */,
+				CE33CD28250E89E600BD73BC /* SBManager.swift */,
+				CE88A7EF250F1E6600F5CCC5 /* CustomSBUser.swift */,
+			);
+			path = Sendbird;
+			sourceTree = "<group>";
+		};
+		CE33CD15250CECD000BD73BC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CE33CD16250CECDE00BD73BC /* UITableView+.swift */,
+				CE33CD18250CED0000BD73BC /* NSObject+.swift */,
+				CE88A7F1250F553300F5CCC5 /* UITextField+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CE33CD26250E7F0200BD73BC /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				CE33CD22250E765300BD73BC /* GroupVC.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		CE33CD27250E7F1000BD73BC /* OpenChannel */ = {
+			isa = PBXGroup;
+			children = (
+				CE33CD24250E766400BD73BC /* OpenChannelVC.swift */,
+				CE33CD2C250E9AE700BD73BC /* ChatVC.swift */,
+				CE88A7F3250F6AD900F5CCC5 /* MessageCellAdmin.swift */,
+				CE88A7F5250F76FF00F5CCC5 /* MessageCellUser.swift */,
+				CE88A7F7250F77D400F5CCC5 /* MessageCell.swift */,
+			);
+			path = OpenChannel;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE33CCF1250CC26900BD73BC /* Test SendBird */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE33CD06250CC26B00BD73BC /* Build configuration list for PBXNativeTarget "Test SendBird" */;
+			buildPhases = (
+				24AF13C04EEFBDD3B80F5BC8 /* [CP] Check Pods Manifest.lock */,
+				CE33CCEE250CC26900BD73BC /* Sources */,
+				CE33CCEF250CC26900BD73BC /* Frameworks */,
+				CE33CCF0250CC26900BD73BC /* Resources */,
+				1D89BC67E3D2FAAA8F5A9F97 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Test SendBird";
+			productName = "Test SendBird";
+			productReference = CE33CCF2250CC26900BD73BC /* Test SendBird.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE33CCEA250CC26900BD73BC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1170;
+				LastUpgradeCheck = 1170;
+				ORGANIZATIONNAME = Tracker;
+				TargetAttributes = {
+					CE33CCF1250CC26900BD73BC = {
+						CreatedOnToolsVersion = 11.7;
+					};
+				};
+			};
+			buildConfigurationList = CE33CCED250CC26900BD73BC /* Build configuration list for PBXProject "Test SendBird" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CE33CCE9250CC26900BD73BC;
+			productRefGroup = CE33CCF3250CC26900BD73BC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE33CCF1250CC26900BD73BC /* Test SendBird */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE33CCF0250CC26900BD73BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE33CD02250CC26B00BD73BC /* LaunchScreen.storyboard in Resources */,
+				CE33CCFF250CC26B00BD73BC /* Assets.xcassets in Resources */,
+				CE33CD1F250DFA5200BD73BC /* Storyboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1D89BC67E3D2FAAA8F5A9F97 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Test SendBird/Pods-Test SendBird-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Test SendBird/Pods-Test SendBird-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Test SendBird/Pods-Test SendBird-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		24AF13C04EEFBDD3B80F5BC8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Test SendBird-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE33CCEE250CC26900BD73BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE33CD2D250E9AE700BD73BC /* ChatVC.swift in Sources */,
+				CE88A7F0250F1E6600F5CCC5 /* CustomSBUser.swift in Sources */,
+				CE33CD0B250CC91A00BD73BC /* Utils.swift in Sources */,
+				CE33CD19250CED0000BD73BC /* NSObject+.swift in Sources */,
+				CE88A7F6250F76FF00F5CCC5 /* MessageCellUser.swift in Sources */,
+				CE33CD17250CECDE00BD73BC /* UITableView+.swift in Sources */,
+				CE33CD23250E765300BD73BC /* GroupVC.swift in Sources */,
+				CE33CD21250E5A2F00BD73BC /* SBConnectionManager.swift in Sources */,
+				CE33CD1D250DE9AC00BD73BC /* LoginVC.swift in Sources */,
+				CE33CD25250E766400BD73BC /* OpenChannelVC.swift in Sources */,
+				CE88A7F2250F553300F5CCC5 /* UITextField+.swift in Sources */,
+				CE33CCFA250CC26900BD73BC /* HomeVC.swift in Sources */,
+				CE88A7F4250F6AD900F5CCC5 /* MessageCellAdmin.swift in Sources */,
+				CE88A7F8250F77D400F5CCC5 /* MessageCell.swift in Sources */,
+				CE33CD29250E89E600BD73BC /* SBManager.swift in Sources */,
+				CE33CD1B250DE88400BD73BC /* UserDefaultHelper.swift in Sources */,
+				CE33CCF6250CC26900BD73BC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CE33CD00250CC26B00BD73BC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE33CD01250CC26B00BD73BC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE33CD04250CC26B00BD73BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CE33CD05250CC26B00BD73BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE33CD07250CC26B00BD73BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 693A5030C5440BB00954A260 /* Pods-Test SendBird.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7859BCHX87;
+				INFOPLIST_FILE = "Test SendBird/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dat.chat.Test-SendBird";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CE33CD08250CC26B00BD73BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6B91B7E1B65D97468A528C4 /* Pods-Test SendBird.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7859BCHX87;
+				INFOPLIST_FILE = "Test SendBird/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dat.chat.Test-SendBird";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE33CCED250CC26900BD73BC /* Build configuration list for PBXProject "Test SendBird" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE33CD04250CC26B00BD73BC /* Debug */,
+				CE33CD05250CC26B00BD73BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE33CD06250CC26B00BD73BC /* Build configuration list for PBXNativeTarget "Test SendBird" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE33CD07250CC26B00BD73BC /* Debug */,
+				CE33CD08250CC26B00BD73BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE33CCEA250CC26900BD73BC /* Project object */;
+}
