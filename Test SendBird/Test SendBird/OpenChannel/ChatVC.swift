@@ -35,7 +35,7 @@ class ChatVC: UIViewController {
         view.setImage(UIImage(systemName: "arrowtriangle.right.fill"), for: .normal)
         view.setImage(UIImage(systemName: "arrowtriangle.right"), for: .disabled)
         view.isEnabled = false
-        view.tintColor = .blue
+        view.tintColor = .systemBlue
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(buttonSendMessageTapped))
         view.addGestureRecognizer(tapGesture)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +45,7 @@ class ChatVC: UIViewController {
     lazy var buttonMedia: UIButton = {
         let view = UIButton()
         view.setImage(UIImage(systemName: "circle.grid.2x2.fill"), for: .normal)
-        view.tintColor = .blue
+        view.tintColor = .systemBlue
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -53,7 +53,7 @@ class ChatVC: UIViewController {
     lazy var buttonImage: UIButton = {
         let view = UIButton()
         view.setImage(UIImage(systemName: "person.crop.square.fill"), for: .normal)
-        view.tintColor = .blue
+        view.tintColor = .systemBlue
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -61,7 +61,7 @@ class ChatVC: UIViewController {
     lazy var buttonFile: UIButton = {
         let view = UIButton()
         view.setImage(UIImage(systemName: "folder.fill.badge.plus"), for: .normal)
-        view.tintColor = .blue
+        view.tintColor = .systemBlue
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -69,7 +69,7 @@ class ChatVC: UIViewController {
     lazy var buttonExpand: UIButton = {
         let view = UIButton()
         view.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-        view.tintColor = .blue
+        view.tintColor = .systemBlue
         view.isHidden = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(buttonExpandChatTapped))
         view.addGestureRecognizer(tapGesture)
@@ -92,6 +92,9 @@ class ChatVC: UIViewController {
         return view
     }()
     
+    //MARK: - data & state
+    private let openChannel: SBDOpenChannel
+    private var messageData: [SBDBaseMessage] = []
     var bottomConstaintChatBox: NSLayoutConstraint?
     var leadingConstraintMesageTextFieldCollapse: NSLayoutConstraint?
     var leadingConstraintMesageTextFieldExpanded: NSLayoutConstraint?
@@ -100,10 +103,6 @@ class ChatVC: UIViewController {
             animateExpandChatTextField(expand: chatTextFieldExpaned)
         }
     }
-    
-    //MARK: - data
-    private let openChannel: SBDOpenChannel
-    private var messageData: [SBDBaseMessage] = []
     
     //MARK: - init
     init?(openChannel: SBDOpenChannel) {
@@ -138,6 +137,59 @@ class ChatVC: UIViewController {
             progressHub.hide()
         }
     }
+    
+    private func sendMessage(){
+        guard !(textFieldChat.text!.isEmpty), let message = textFieldChat.text else{ return }
+        SBManager.shared.sendMessage(openChannel, message: message) { (message, error) in
+            if error != nil{
+                chatAlert.showBasic(title: "Error!!", message: error, viewController: self)
+            }else{
+                self.messageData.append(message!)
+                self.messageTableView.insertRows(at: [IndexPath(row: self.messageData.count - 1, section: 0)], with: .none)
+                self.scrollToBottom(animation: true)
+                self.textFieldChat.text = ""
+                self.buttonSend.isEnabled = false
+                self.chatTextFieldExpaned = false
+            }
+        }
+    }
+    
+    func scrollToBottom(animation: Bool = false) {
+        if self.messageData.count == 0 {
+            return
+        }
+        self.messageTableView.scrollToRow(at: IndexPath(row: self.messageData.count - 1, section: 0), at: .bottom, animated: animation)
+    }
+    
+    private func animateExpandChatTextField(expand: Bool){
+        if expand{
+            self.leadingConstraintMesageTextFieldCollapse?.isActive = false
+            self.leadingConstraintMesageTextFieldExpanded?.isActive = true
+            UIView.animate(withDuration: 0.2, animations: {
+                self.view.layoutIfNeeded()
+            }) { (_) in
+                UIView.animate(withDuration: 0.2) {
+                    self.buttonExpand.isHidden = false
+                    self.buttonMedia.isHidden = true
+                    self.buttonImage.isHidden = true
+                    self.buttonFile.isHidden = true
+                }
+            }
+        }else{
+            UIView.animate(withDuration: 0.2, animations: {
+                self.buttonExpand.isHidden = true
+                self.buttonMedia.isHidden = false
+                self.buttonImage.isHidden = false
+                self.buttonFile.isHidden = false
+            }) { (_) in
+                self.leadingConstraintMesageTextFieldExpanded?.isActive = false
+                self.leadingConstraintMesageTextFieldCollapse?.isActive = true
+                UIView.animate(withDuration: 0.2) {
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }
+    }
 }
 
 //MARK: - setup views
@@ -147,7 +199,7 @@ extension ChatVC{
         title = openChannel.name
         view.backgroundColor = .white
         navigationController?.title = "Open"
-        let settingOpenChannelBarButton = UIBarButtonItem(image: UIImage(systemName: "exclamationmark.circle"), style: .plain, target: self, action: #selector(self.buttonSettingOpenChannelTapped))
+        let settingOpenChannelBarButton = UIBarButtonItem(image: UIImage(systemName: "exclamationmark.circle.fill"), style: .plain, target: self, action: #selector(self.buttonSettingOpenChannelTapped))
         self.navigationItem.rightBarButtonItem = settingOpenChannelBarButton
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
@@ -229,6 +281,8 @@ extension ChatVC{
     }
 }
 
+//MARK: - Delegate implementations
+
 extension ChatVC: UITextFieldDelegate{
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         // return NO to disallow editing.
@@ -281,6 +335,19 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
+extension ChatVC: SBDChannelDelegate{
+    func channel(_ sender: SBDBaseChannel, didReceive message: SBDBaseMessage) {
+        if sender == openChannel{
+            DispatchQueue.main.async {
+                print("receive: \(message)")
+                self.messageData.append(message)
+                self.messageTableView.insertRows(at: [IndexPath(row: self.messageData.count - 1, section: 0)], with: .none)
+                self.scrollToBottom(animation: true)
+            }
+        }
+    }
+}
+
 //MARK: - actions
 extension ChatVC{
     @objc func buttonCancelTapped(){
@@ -295,22 +362,6 @@ extension ChatVC{
     
     @objc func buttonSendMessageTapped(){
         sendMessage()
-    }
-    
-    private func sendMessage(){
-        guard !(textFieldChat.text!.isEmpty), let message = textFieldChat.text else{ return }
-        SBManager.shared.sendMessage(openChannel, message: message) { (message, error) in
-            if error != nil{
-                chatAlert.showBasic(title: "Error!!", message: error, viewController: self)
-            }else{
-                self.messageData.append(message!)
-                self.messageTableView.insertRows(at: [IndexPath(row: self.messageData.count - 1, section: 0)], with: .none)
-                self.scrollToBottom(animation: true)
-                self.textFieldChat.text = ""
-                self.buttonSend.isEnabled = false
-                self.chatTextFieldExpaned = false
-            }
-        }
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -330,13 +381,6 @@ extension ChatVC{
         }
     }
     
-    func scrollToBottom(animation: Bool = false) {
-        if self.messageData.count == 0 {
-            return
-        }
-        self.messageTableView.scrollToRow(at: IndexPath(row: self.messageData.count - 1, section: 0), at: .bottom, animated: animation)
-    }
-    
     @objc func textFieldDidChange(_ textField: UITextField) {
         buttonSend.isEnabled = !(textField.text!.isEmpty)
         if textField.text!.isEmpty{
@@ -349,48 +393,7 @@ extension ChatVC{
             }
         }
     }
-    
-    private func animateExpandChatTextField(expand: Bool){
-        if expand{
-            self.leadingConstraintMesageTextFieldCollapse?.isActive = false
-            self.leadingConstraintMesageTextFieldExpanded?.isActive = true
-            UIView.animate(withDuration: 0.2, animations: {
-                self.view.layoutIfNeeded()
-            }) { (_) in
-                UIView.animate(withDuration: 0.2) {
-                    self.buttonExpand.isHidden = false
-                    self.buttonMedia.isHidden = true
-                    self.buttonImage.isHidden = true
-                    self.buttonFile.isHidden = true
-                }
-            }
-        }else{
-            UIView.animate(withDuration: 0.2, animations: {
-                self.buttonExpand.isHidden = true
-                self.buttonMedia.isHidden = false
-                self.buttonImage.isHidden = false
-                self.buttonFile.isHidden = false
-            }) { (_) in
-                self.leadingConstraintMesageTextFieldExpanded?.isActive = false
-                self.leadingConstraintMesageTextFieldCollapse?.isActive = true
-                UIView.animate(withDuration: 0.2) {
-                    self.view.layoutIfNeeded()
-                }
-            }
-        }
-    }
 }
 
 //MARK: - others
-extension ChatVC: SBDChannelDelegate{
-    func channel(_ sender: SBDBaseChannel, didReceive message: SBDBaseMessage) {
-        if sender == openChannel{
-            DispatchQueue.main.async {
-                print("receive: \(message)")
-                self.messageData.append(message)
-                self.messageTableView.insertRows(at: [IndexPath(row: self.messageData.count - 1, section: 0)], with: .none)
-                self.scrollToBottom(animation: true)
-            }
-        }
-    }
-}
+

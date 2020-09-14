@@ -13,7 +13,7 @@ class MessageCell: UITableViewCell {
     //MARK: - ui components
     lazy var viewHolder: UIView = {
         let view = UIView()
-        view.backgroundColor = .blue
+        view.backgroundColor = .systemBlue
         view.layer.cornerRadius = 15
         view.translatesAutoresizingMaskIntoConstraints = false
         return view

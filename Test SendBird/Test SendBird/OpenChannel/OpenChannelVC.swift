@@ -109,6 +109,10 @@ extension OpenChannelVC: UITableViewDelegate, UITableViewDataSource{
 extension OpenChannelVC{
     @objc func buttonCreateChannelTapped(){
         chatAlert.showWithTextField(title: "Create Open Channel", message: nil, yesAction: "Create", noAction: "Cancel", placeholder: "Enter Channel Name", yesHandler: { (text) in
+            if text == nil || text!.isEmpty{
+                chatAlert.showBasic(title: "Error!", message: "Channel Name Can't not be empty!!", viewController: self)
+                return
+            }
             progressHub.show()
             SBManager.shared.createOpenChannel(name: text) { (openChannel, error) in
                 guard let openChannel = openChannel else {
