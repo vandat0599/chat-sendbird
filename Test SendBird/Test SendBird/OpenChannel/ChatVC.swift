@@ -323,6 +323,8 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource{
             if let adminMessage = message as? SBDAdminMessage{
                 let messageCell = tableView.dequeueReusableCell(with: MessageCellReceive.self, for: indexPath)
                 messageCell.configure(
+                    name: "Admin",
+                    profileUrl: openChannel.coverUrl ?? "",
                     message: adminMessage.message,
                     roleType: .admin,
                     sameTop: messageData.count > 1 && indexPath.row > 0 && (messageData[indexPath.row - 1].sender?.userId == adminMessage.sender?.userId),
@@ -346,6 +348,8 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource{
                 else {
                     let messageCell = tableView.dequeueReusableCell(with: MessageCellReceive.self, for: indexPath)
                     messageCell.configure(
+                        name: sender.nickname ?? "",
+                        profileUrl: sender.profileUrl ?? "",
                         message: userMessage.message,
                         roleType: .user,
                         sameTop: messageData.count > 1 && indexPath.row > 0 && (messageData[indexPath.row - 1].sender?.userId == userMessage.sender?.userId),

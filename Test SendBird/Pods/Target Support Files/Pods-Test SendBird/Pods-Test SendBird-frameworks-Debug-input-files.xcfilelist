@@ -1,6 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-Test SendBird/Pods-Test SendBird-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/KRActivityIndicatorView/KRActivityIndicatorView.framework
 ${BUILT_PRODUCTS_DIR}/KRProgressHUD/KRProgressHUD.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
 ${PODS_ROOT}/SendBirdSDK/SendBirdSDK.framework
 ${PODS_ROOT}/SendBirdSDK/SendBirdSDK.framework.dSYM
 ${PODS_ROOT}/SendBirdUIKit/SendBirdUIKit.framework

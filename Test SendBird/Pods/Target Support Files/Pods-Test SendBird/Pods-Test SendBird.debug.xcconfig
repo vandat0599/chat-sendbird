@@ -1,9 +1,9 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/KRActivityIndicatorView" "${PODS_CONFIGURATION_BUILD_DIR}/KRProgressHUD" "${PODS_ROOT}/SendBirdSDK" "${PODS_ROOT}/SendBirdUIKit"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/KRActivityIndicatorView" "${PODS_CONFIGURATION_BUILD_DIR}/KRProgressHUD" "${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage" "${PODS_ROOT}/SendBirdSDK" "${PODS_ROOT}/SendBirdUIKit"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/KRActivityIndicatorView/KRActivityIndicatorView.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/KRProgressHUD/KRProgressHUD.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/KRActivityIndicatorView/KRActivityIndicatorView.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/KRProgressHUD/KRProgressHUD.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_LDFLAGS = $(inherited) -l"icucore" -framework "CFNetwork" -framework "CoreData" -framework "CoreFoundation" -framework "Foundation" -framework "KRActivityIndicatorView" -framework "KRProgressHUD" -framework "MobileCoreServices" -framework "Security" -framework "SendBirdSDK" -framework "SendBirdUIKit" -framework "SystemConfiguration" -framework "UIKit"
+OTHER_LDFLAGS = $(inherited) -l"icucore" -framework "CFNetwork" -framework "CoreData" -framework "CoreFoundation" -framework "Foundation" -framework "ImageIO" -framework "KRActivityIndicatorView" -framework "KRProgressHUD" -framework "MobileCoreServices" -framework "SDWebImage" -framework "Security" -framework "SendBirdSDK" -framework "SendBirdUIKit" -framework "SystemConfiguration" -framework "UIKit"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

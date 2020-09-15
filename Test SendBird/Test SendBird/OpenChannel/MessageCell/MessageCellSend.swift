@@ -29,12 +29,6 @@ class MessageCellSend: UITableViewCell {
         return view
     }()
     
-    var imageAvatar: UIImageView = {
-        let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     //MARK: - data & state
     var messagePosition = MessagePosition.top
     var topConstraint: NSLayoutConstraint?
@@ -75,7 +69,6 @@ class MessageCellSend: UITableViewCell {
             viewHolder.crBottomRight = false
         case .bottom:
             topConstraint?.constant = 1
-//            bottomConstraint?.constant = -Constant.messageMargin
             viewHolder.crTopRight = false
             viewHolder.crBottomRight = true
         case .alone:
