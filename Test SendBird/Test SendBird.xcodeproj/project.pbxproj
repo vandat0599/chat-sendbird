@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8F9C777BCA523081BCF9A2D1 /* Pods_Test_SendBird.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9652F30151F8DB28643F8816 /* Pods_Test_SendBird.framework */; };
+		CE10BD192510F4DE003F50B9 /* MessageUltils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE10BD182510F4DE003F50B9 /* MessageUltils.swift */; };
+		CE10BD1B2510F6C7003F50B9 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE10BD1A2510F6C7003F50B9 /* UIView+.swift */; };
+		CE10BD1D25110646003F50B9 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE10BD1C25110646003F50B9 /* UIColor+.swift */; };
 		CE33CCF6250CC26900BD73BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CCF5250CC26900BD73BC /* AppDelegate.swift */; };
 		CE33CCFA250CC26900BD73BC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CCF9250CC26900BD73BC /* HomeVC.swift */; };
 		CE33CCFF250CC26B00BD73BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE33CCFE250CC26B00BD73BC /* Assets.xcassets */; };
@@ -26,13 +29,16 @@
 		CE88A7F0250F1E6600F5CCC5 /* CustomSBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7EF250F1E6600F5CCC5 /* CustomSBUser.swift */; };
 		CE88A7F2250F553300F5CCC5 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7F1250F553300F5CCC5 /* UITextField+.swift */; };
 		CE88A7F4250F6AD900F5CCC5 /* MessageCellAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7F3250F6AD900F5CCC5 /* MessageCellAdmin.swift */; };
-		CE88A7F6250F76FF00F5CCC5 /* MessageCellUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7F5250F76FF00F5CCC5 /* MessageCellUser.swift */; };
-		CE88A7F8250F77D400F5CCC5 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7F7250F77D400F5CCC5 /* MessageCell.swift */; };
+		CE88A7F6250F76FF00F5CCC5 /* MessageCellReceive.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7F5250F76FF00F5CCC5 /* MessageCellReceive.swift */; };
+		CE88A7F8250F77D400F5CCC5 /* MessageCellSend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7F7250F77D400F5CCC5 /* MessageCellSend.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		693A5030C5440BB00954A260 /* Pods-Test SendBird.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test SendBird.debug.xcconfig"; path = "Target Support Files/Pods-Test SendBird/Pods-Test SendBird.debug.xcconfig"; sourceTree = "<group>"; };
 		9652F30151F8DB28643F8816 /* Pods_Test_SendBird.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test_SendBird.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE10BD182510F4DE003F50B9 /* MessageUltils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUltils.swift; sourceTree = "<group>"; };
+		CE10BD1A2510F6C7003F50B9 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		CE10BD1C25110646003F50B9 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		CE33CCF2250CC26900BD73BC /* Test SendBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Test SendBird.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE33CCF5250CC26900BD73BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE33CCF9250CC26900BD73BC /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -53,8 +59,8 @@
 		CE88A7EF250F1E6600F5CCC5 /* CustomSBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSBUser.swift; sourceTree = "<group>"; };
 		CE88A7F1250F553300F5CCC5 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		CE88A7F3250F6AD900F5CCC5 /* MessageCellAdmin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellAdmin.swift; sourceTree = "<group>"; };
-		CE88A7F5250F76FF00F5CCC5 /* MessageCellUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellUser.swift; sourceTree = "<group>"; };
-		CE88A7F7250F77D400F5CCC5 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		CE88A7F5250F76FF00F5CCC5 /* MessageCellReceive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellReceive.swift; sourceTree = "<group>"; };
+		CE88A7F7250F77D400F5CCC5 /* MessageCellSend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellSend.swift; sourceTree = "<group>"; };
 		D6B91B7E1B65D97468A528C4 /* Pods-Test SendBird.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test SendBird.release.xcconfig"; path = "Target Support Files/Pods-Test SendBird/Pods-Test SendBird.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +91,17 @@
 				D6B91B7E1B65D97468A528C4 /* Pods-Test SendBird.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CE10BD172510F48B003F50B9 /* MessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE88A7F3250F6AD900F5CCC5 /* MessageCellAdmin.swift */,
+				CE88A7F5250F76FF00F5CCC5 /* MessageCellReceive.swift */,
+				CE88A7F7250F77D400F5CCC5 /* MessageCellSend.swift */,
+				CE10BD182510F4DE003F50B9 /* MessageUltils.swift */,
+			);
+			path = MessageCell;
 			sourceTree = "<group>";
 		};
 		CE33CCE9250CC26900BD73BC = {
@@ -149,6 +166,8 @@
 				CE33CD16250CECDE00BD73BC /* UITableView+.swift */,
 				CE33CD18250CED0000BD73BC /* NSObject+.swift */,
 				CE88A7F1250F553300F5CCC5 /* UITextField+.swift */,
+				CE10BD1A2510F6C7003F50B9 /* UIView+.swift */,
+				CE10BD1C25110646003F50B9 /* UIColor+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -164,11 +183,9 @@
 		CE33CD27250E7F1000BD73BC /* OpenChannel */ = {
 			isa = PBXGroup;
 			children = (
+				CE10BD172510F48B003F50B9 /* MessageCell */,
 				CE33CD24250E766400BD73BC /* OpenChannelVC.swift */,
 				CE33CD2C250E9AE700BD73BC /* ChatVC.swift */,
-				CE88A7F3250F6AD900F5CCC5 /* MessageCellAdmin.swift */,
-				CE88A7F5250F76FF00F5CCC5 /* MessageCellUser.swift */,
-				CE88A7F7250F77D400F5CCC5 /* MessageCell.swift */,
 			);
 			path = OpenChannel;
 			sourceTree = "<group>";
@@ -292,16 +309,19 @@
 				CE88A7F0250F1E6600F5CCC5 /* CustomSBUser.swift in Sources */,
 				CE33CD0B250CC91A00BD73BC /* Utils.swift in Sources */,
 				CE33CD19250CED0000BD73BC /* NSObject+.swift in Sources */,
-				CE88A7F6250F76FF00F5CCC5 /* MessageCellUser.swift in Sources */,
+				CE88A7F6250F76FF00F5CCC5 /* MessageCellReceive.swift in Sources */,
 				CE33CD17250CECDE00BD73BC /* UITableView+.swift in Sources */,
 				CE33CD23250E765300BD73BC /* GroupVC.swift in Sources */,
 				CE33CD21250E5A2F00BD73BC /* SBConnectionManager.swift in Sources */,
 				CE33CD1D250DE9AC00BD73BC /* LoginVC.swift in Sources */,
+				CE10BD1D25110646003F50B9 /* UIColor+.swift in Sources */,
 				CE33CD25250E766400BD73BC /* OpenChannelVC.swift in Sources */,
 				CE88A7F2250F553300F5CCC5 /* UITextField+.swift in Sources */,
 				CE33CCFA250CC26900BD73BC /* HomeVC.swift in Sources */,
 				CE88A7F4250F6AD900F5CCC5 /* MessageCellAdmin.swift in Sources */,
-				CE88A7F8250F77D400F5CCC5 /* MessageCell.swift in Sources */,
+				CE88A7F8250F77D400F5CCC5 /* MessageCellSend.swift in Sources */,
+				CE10BD192510F4DE003F50B9 /* MessageUltils.swift in Sources */,
+				CE10BD1B2510F6C7003F50B9 /* UIView+.swift in Sources */,
 				CE33CD29250E89E600BD73BC /* SBManager.swift in Sources */,
 				CE33CD1B250DE88400BD73BC /* UserDefaultHelper.swift in Sources */,
 				CE33CCF6250CC26900BD73BC /* AppDelegate.swift in Sources */,

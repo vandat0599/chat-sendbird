@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SBDMain.initWithApplicationId("BEF7BFDB-6D0C-4DC4-AA22-EF9F6DC5215F")
         window = UIWindow(frame: UIScreen.main.bounds)
         let rootViewController = getViewControllerFromAccount()
-        self.window?.rootViewController = rootViewController
+        self.window?.rootViewController = UINavigationController(rootViewController: rootViewController)
         self.window?.makeKeyAndVisible()
         return true
     }

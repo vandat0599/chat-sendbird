@@ -90,7 +90,7 @@ extension OpenChannelVC: UITableViewDelegate, UITableViewDataSource{
                 return
             }
             let chatVC = ChatVC(openChannel: self.openChannels[indexPath.row])
-            self.navigationController?.pushViewController(chatVC!, animated: true)
+            self.parent?.navigationController?.pushViewController(chatVC!, animated: true)
         }
     }
     

@@ -82,3 +82,7 @@ class Utils{
         return (height: keyboardFrameBegin, duration: duration, curve: animationCurve)
     }
 }
+
+struct Constant{
+    static var messageMargin:CGFloat = 20.0
+}

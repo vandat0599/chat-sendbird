@@ -8,13 +8,15 @@
 
 import UIKit
 
-class MessageCell: UITableViewCell {
+class MessageCellSend: UITableViewCell {
 
     //MARK: - ui components
     lazy var viewHolder: UIView = {
         let view = UIView()
         view.backgroundColor = .systemBlue
         view.layer.cornerRadius = 15
+        view.crTopLeft = true
+        view.crBottomLeft = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -33,27 +35,67 @@ class MessageCell: UITableViewCell {
         return view
     }()
     
+    //MARK: - data & state
+    var messagePosition = MessagePosition.top
+    var topConstraint: NSLayoutConstraint?
+    var bottomConstraint: NSLayoutConstraint?
+    
+    //MARK: - init
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
     }
     
-    //MARK: - init
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(message: String){
+    func configure(message: String, sameTop: Bool, sameBottom: Bool){
         textMessage.text = message
+        if sameTop && sameBottom{
+            messagePosition = .mid
+        }else if !sameTop && !sameBottom{
+            messagePosition = .alone
+        }else if sameTop && !sameBottom{
+            messagePosition = .bottom
+        }else if !sameTop && sameBottom{
+            messagePosition = .top
+        }
+        switch messagePosition {
+        case .top:
+            bottomConstraint?.constant = -1
+            topConstraint?.constant = Constant.messageMargin
+            viewHolder.crTopRight = true
+            viewHolder.crBottomRight = false
+        case .mid:
+            topConstraint?.constant = 1
+            bottomConstraint?.constant = -1
+            viewHolder.crTopRight = false
+            viewHolder.crBottomRight = false
+        case .bottom:
+            topConstraint?.constant = 1
+//            bottomConstraint?.constant = -Constant.messageMargin
+            viewHolder.crTopRight = false
+            viewHolder.crBottomRight = true
+        case .alone:
+            topConstraint?.constant = Constant.messageMargin
+            viewHolder.crTopRight = true
+            viewHolder.crBottomRight = true
+        }
+        UIView.animate(withDuration: 0) {
+            self.layoutIfNeeded()
+        }
     }
     
     func setupViews() {
         selectionStyle = .none
         addSubview(viewHolder)
-        
+        topConstraint = viewHolder.topAnchor.constraint(equalTo: topAnchor, constant: 1)
+        bottomConstraint = viewHolder.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -1)
         NSLayoutConstraint.activate([
-            viewHolder.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            viewHolder.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
+            topConstraint!,
+            bottomConstraint!,
             viewHolder.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 50),
             viewHolder.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
         ])

@@ -15,9 +15,8 @@ class ChatVC: UIViewController {
     lazy var messageTableView: UITableView = {
         let view = UITableView()
         view.separatorStyle = .none
-        view.registerClass(cellType: MessageCell.self)
-        view.registerClass(cellType: MessageCellUser.self)
-        view.registerClass(cellType: MessageCellAdmin.self)
+        view.registerClass(cellType: MessageCellSend.self)
+        view.registerClass(cellType: MessageCellReceive.self)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -123,7 +122,11 @@ class ChatVC: UIViewController {
         layoutChatSendView()
         layoutChatTableView()
         loadPreviousMessage()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     //MARK: - others
@@ -144,12 +147,23 @@ class ChatVC: UIViewController {
             if error != nil{
                 chatAlert.showBasic(title: "Error!!", message: error, viewController: self)
             }else{
-                self.messageData.append(message!)
-                self.messageTableView.insertRows(at: [IndexPath(row: self.messageData.count - 1, section: 0)], with: .none)
-                self.scrollToBottom(animation: true)
+                self.addMessage(message: message!)
                 self.textFieldChat.text = ""
                 self.buttonSend.isEnabled = false
                 self.chatTextFieldExpaned = false
+            }
+        }
+    }
+    
+    private func addMessage(message: SBDBaseMessage){
+        messageData.append(message)
+        UIView.animate(withDuration: 0, animations: {
+            self.messageTableView.insertRows(at: [IndexPath(row: self.messageData.count - 1, section: 0)], with: .none)
+        }) { (_) in
+            UIView.animate(withDuration: 0, animations: {
+                self.messageTableView.reloadRows(at: [IndexPath(row: self.messageData.count - 2, section: 0)], with: .none)
+            }) { (_) in
+                self.scrollToBottom(animation: true)
             }
         }
     }
@@ -307,23 +321,37 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource{
         let message = messageData[indexPath.row]
         if message is SBDAdminMessage {
             if let adminMessage = message as? SBDAdminMessage{
-                let adminMessageCell = tableView.dequeueReusableCell(with: MessageCellAdmin.self, for: indexPath)
-                adminMessageCell.configure(message: adminMessage.message)
-                cell = adminMessageCell
+                let messageCell = tableView.dequeueReusableCell(with: MessageCellReceive.self, for: indexPath)
+                messageCell.configure(
+                    message: adminMessage.message,
+                    roleType: .admin,
+                    sameTop: messageData.count > 1 && indexPath.row > 0 && (messageData[indexPath.row - 1].sender?.userId == adminMessage.sender?.userId),
+                    sameBottom: indexPath.row < messageData.count - 1 && (messageData[indexPath.row + 1].sender?.userId == adminMessage.sender?.userId)
+                )
+                cell = messageCell
             }
         }
         else if message is SBDUserMessage {
             let userMessage = message as! SBDUserMessage
             if let sender = userMessage.sender {
                 if sender.userId == SBDMain.getCurrentUser()!.userId {
-                    let userMessageCell = tableView.dequeueReusableCell(with: MessageCell.self, for: indexPath)
-                    userMessageCell.configure(message: userMessage.message)
-                    cell = userMessageCell
+                    let messageCell = tableView.dequeueReusableCell(with: MessageCellSend.self, for: indexPath)
+                    messageCell.configure(
+                        message: userMessage.message,
+                        sameTop: messageData.count > 1 && indexPath.row > 0 && (messageData[indexPath.row - 1].sender?.userId == userMessage.sender?.userId),
+                        sameBottom: indexPath.row < messageData.count - 1 && (messageData[indexPath.row + 1].sender?.userId == userMessage.sender?.userId)
+                    )
+                    cell = messageCell
                 }
                 else {
-                    let userMessageCell = tableView.dequeueReusableCell(with: MessageCellUser.self, for: indexPath)
-                    userMessageCell.configure(message: userMessage.message)
-                    cell = userMessageCell
+                    let messageCell = tableView.dequeueReusableCell(with: MessageCellReceive.self, for: indexPath)
+                    messageCell.configure(
+                        message: userMessage.message,
+                        roleType: .user,
+                        sameTop: messageData.count > 1 && indexPath.row > 0 && (messageData[indexPath.row - 1].sender?.userId == userMessage.sender?.userId),
+                        sameBottom: indexPath.row < messageData.count - 1 && (messageData[indexPath.row + 1].sender?.userId == userMessage.sender?.userId)
+                    )
+                    cell = messageCell
                 }
             }
         }
@@ -339,10 +367,7 @@ extension ChatVC: SBDChannelDelegate{
     func channel(_ sender: SBDBaseChannel, didReceive message: SBDBaseMessage) {
         if sender == openChannel{
             DispatchQueue.main.async {
-                print("receive: \(message)")
-                self.messageData.append(message)
-                self.messageTableView.insertRows(at: [IndexPath(row: self.messageData.count - 1, section: 0)], with: .none)
-                self.scrollToBottom(animation: true)
+                self.addMessage(message: message)
             }
         }
     }
@@ -358,6 +383,10 @@ extension ChatVC{
     }
     @objc func buttonSettingOpenChannelTapped(){
         print("setting tapped")
+    }
+    
+    @objc func backBarButtonTapped(){
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func buttonSendMessageTapped(){
