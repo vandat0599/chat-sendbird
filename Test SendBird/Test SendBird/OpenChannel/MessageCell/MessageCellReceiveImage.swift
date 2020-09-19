@@ -66,7 +66,6 @@ class MessageCellReceiveImage: UITableViewCell {
     }
 
     func configure(name: String, profileUrl: String, imageURL: URL, roleType: MessageReceiveRole, sameTop: Bool, sameBottom: Bool){
-        print("received: \(imageURL.absoluteString)")
         imageMessage.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "img_placeholder"))
         imageAvatar.sd_setImage(with: URL(string: profileUrl), placeholderImage: UIImage(named: "img_profile_1"))
         textName.text = name
