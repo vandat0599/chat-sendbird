@@ -115,6 +115,7 @@ class ChatVC: UIViewController {
             animateExpandChatTextField(expand: chatTextFieldExpaned)
         }
     }
+    let transition = PopAnimator()
     
     //MARK: - init
     init?(openChannel: SBDOpenChannel) {
@@ -134,6 +135,16 @@ class ChatVC: UIViewController {
         layoutChatSendView()
         layoutChatTableView()
         loadPreviousMessage()
+        transition.dismissCompletion = { [weak self] in
+          guard
+            let selectedIndexPathCell = self?.messageTableView.indexPathForSelectedRow,
+            let _ = self?.messageTableView.cellForRow(at: selectedIndexPathCell)
+              as? MessageCellSendImage ?? self?.messageTableView.cellForRow(at: selectedIndexPathCell)
+              as? MessageCellReceiveImage
+            else {
+              return
+          }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -341,7 +352,23 @@ extension ChatVC: UITextFieldDelegate{
 
 extension ChatVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        guard
+          let selectedCell = tableView.cellForRow(at: indexPath)
+            as? MessageCellSendImage ?? tableView.cellForRow(at: indexPath)
+            as? MessageCellReceiveImage
+          else {
+            return
+        }
+        var vc = UIViewController()
+        if selectedCell is MessageCellSendImage{
+            vc = ImageVC(image: ((selectedCell as! MessageCellSendImage).imageMessage.image ?? UIImage(color: .black))!)!
+        }
+        else {
+            vc = ImageVC(image: ((selectedCell as! MessageCellReceiveImage).imageMessage.image ?? UIImage(color: .black))!)!
+        }
+        vc.transitioningDelegate = self
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -392,6 +419,7 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource{
             guard let currentUser = SBDMain.getCurrentUser() else { return cell }
             if sender.userId == currentUser.userId{
                 let imageFileMessageCell = tableView.dequeueReusableCell(with: MessageCellSendImage.self, for: indexPath)
+//                imageFileMessageCell.delegate = self
                 imageFileMessageCell.configure(
                     imageURL: URL(string: fileMessage.url)!,
                     sameTop: messageData.count > 1 && indexPath.row > 0 && (messageData[indexPath.row - 1].sender?.userId == fileMessage.sender?.userId),
@@ -443,6 +471,36 @@ extension ChatVC: UINavigationControllerDelegate, UIImagePickerControllerDelegat
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ChatVC: UIViewControllerTransitioningDelegate{
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard
+          let selectedIndexPathCell = messageTableView.indexPathForSelectedRow,
+          let selectedCell = messageTableView.cellForRow(at: selectedIndexPathCell)
+            as? MessageCellSendImage ?? messageTableView.cellForRow(at: selectedIndexPathCell)
+            as? MessageCellReceiveImage,
+          let selectedCellSuperview = selectedCell.superview
+          else {
+            return nil
+        }
+
+        transition.originFrame = selectedCellSuperview.convert(selectedCell.frame, to: nil)
+        transition.originFrame = CGRect(
+          x: transition.originFrame.origin.x + 20,
+          y: transition.originFrame.origin.y + 20,
+          width: transition.originFrame.size.width - 40,
+          height: transition.originFrame.size.height - 40
+        )
+
+        transition.presenting = true
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.presenting = false
+        return transition
     }
 }
 

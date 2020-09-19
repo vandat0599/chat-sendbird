@@ -30,6 +30,8 @@
 		CE33CD2D250E9AE700BD73BC /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CD2C250E9AE700BD73BC /* ChatVC.swift */; };
 		CE6599A72516028B00EFCC5B /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6599A62516028B00EFCC5B /* UIImage+.swift */; };
 		CE6599A9251602BC00EFCC5B /* Numeric+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6599A8251602BC00EFCC5B /* Numeric+.swift */; };
+		CE6599AB25166E4700EFCC5B /* ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6599AA25166E4600EFCC5B /* ImageVC.swift */; };
+		CE6599AD25167CB700EFCC5B /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6599AC25167CB700EFCC5B /* PopAnimator.swift */; };
 		CE88A7F0250F1E6600F5CCC5 /* CustomSBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7EF250F1E6600F5CCC5 /* CustomSBUser.swift */; };
 		CE88A7F2250F553300F5CCC5 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7F1250F553300F5CCC5 /* UITextField+.swift */; };
 		CE88A7F6250F76FF00F5CCC5 /* MessageCellReceive.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7F5250F76FF00F5CCC5 /* MessageCellReceive.swift */; };
@@ -63,6 +65,8 @@
 		CE33CD2C250E9AE700BD73BC /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		CE6599A62516028B00EFCC5B /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		CE6599A8251602BC00EFCC5B /* Numeric+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+.swift"; sourceTree = "<group>"; };
+		CE6599AA25166E4600EFCC5B /* ImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVC.swift; sourceTree = "<group>"; };
+		CE6599AC25167CB700EFCC5B /* PopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
 		CE88A7EF250F1E6600F5CCC5 /* CustomSBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSBUser.swift; sourceTree = "<group>"; };
 		CE88A7F1250F553300F5CCC5 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		CE88A7F5250F76FF00F5CCC5 /* MessageCellReceive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellReceive.swift; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 				CE10BD172510F48B003F50B9 /* MessageCell */,
 				CE33CD24250E766400BD73BC /* OpenChannelVC.swift */,
 				CE33CD2C250E9AE700BD73BC /* ChatVC.swift */,
+				CE6599AA25166E4600EFCC5B /* ImageVC.swift */,
+				CE6599AC25167CB700EFCC5B /* PopAnimator.swift */,
 			);
 			path = OpenChannel;
 			sourceTree = "<group>";
@@ -323,6 +329,7 @@
 				CE33CD17250CECDE00BD73BC /* UITableView+.swift in Sources */,
 				CE33CD23250E765300BD73BC /* GroupVC.swift in Sources */,
 				CE10BD1F2511253A003F50B9 /* MessageCellSendImage.swift in Sources */,
+				CE6599AD25167CB700EFCC5B /* PopAnimator.swift in Sources */,
 				CE33CD21250E5A2F00BD73BC /* SBConnectionManager.swift in Sources */,
 				CE33CD1D250DE9AC00BD73BC /* LoginVC.swift in Sources */,
 				CE10BD1D25110646003F50B9 /* UIColor+.swift in Sources */,
@@ -334,6 +341,7 @@
 				CE10BD1B2510F6C7003F50B9 /* UIView+.swift in Sources */,
 				CE33CD29250E89E600BD73BC /* SBManager.swift in Sources */,
 				CE33CD1B250DE88400BD73BC /* UserDefaultHelper.swift in Sources */,
+				CE6599AB25166E4700EFCC5B /* ImageVC.swift in Sources */,
 				CE6599A72516028B00EFCC5B /* UIImage+.swift in Sources */,
 				CE33CCF6250CC26900BD73BC /* AppDelegate.swift in Sources */,
 				CE10BD2125112559003F50B9 /* MessageCellReceiveImage.swift in Sources */,

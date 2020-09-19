@@ -22,15 +22,15 @@ class MessageCellSendImage: UITableViewCell {
         return view
     }()
     
-    var imageAvatar: UIImageView = {
+    lazy var imageAvatar: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    var imageMessage: UIImageView = {
+    lazy var imageMessage: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleToFill
+        view.contentMode = .scaleAspectFill
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -52,7 +52,8 @@ class MessageCellSendImage: UITableViewCell {
     }
 
     func configure(imageURL: URL, sameTop: Bool, sameBottom: Bool){
-        imageMessage.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "img_placeholder"))
+        imageMessage.sd_imageTransition = .fade
+        imageMessage.sd_setImage(with: imageURL, placeholderImage: UIImage(color: .greyMessage))
         if sameTop && sameBottom{
             messagePosition = .mid
         }else if !sameTop && !sameBottom{
@@ -100,14 +101,13 @@ class MessageCellSendImage: UITableViewCell {
         ])
         
         viewHolder.addSubview(imageMessage)
-        
         NSLayoutConstraint.activate([
             imageMessage.topAnchor.constraint(equalTo: viewHolder.topAnchor, constant: 0),
             imageMessage.bottomAnchor.constraint(equalTo: viewHolder.bottomAnchor, constant: 0),
             imageMessage.leadingAnchor.constraint(equalTo: viewHolder.leadingAnchor, constant: 0),
             imageMessage.trailingAnchor.constraint(equalTo: viewHolder.trailingAnchor, constant: 0),
-            imageMessage.heightAnchor.constraint(lessThanOrEqualToConstant: Utils.screenSize.width*0.8*9/18),
+            imageMessage.widthAnchor.constraint(equalToConstant: Utils.screenSize.width*0.8),
+            imageMessage.heightAnchor.constraint(equalToConstant: Utils.screenSize.width*0.8*9/16),
         ])
     }
-
 }

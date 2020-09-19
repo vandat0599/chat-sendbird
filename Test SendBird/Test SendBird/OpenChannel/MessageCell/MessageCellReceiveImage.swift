@@ -25,7 +25,7 @@ class MessageCellReceiveImage: UITableViewCell {
     
     var imageMessage: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleToFill
+        view.contentMode = .scaleAspectFill
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -66,7 +66,9 @@ class MessageCellReceiveImage: UITableViewCell {
     }
 
     func configure(name: String, profileUrl: String, imageURL: URL, roleType: MessageReceiveRole, sameTop: Bool, sameBottom: Bool){
-        imageMessage.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "img_placeholder"))
+        imageMessage.sd_imageTransition = .fade
+        imageAvatar.sd_imageTransition = .fade
+        imageMessage.sd_setImage(with: imageURL, placeholderImage: UIImage(color: .greyMessage))
         imageAvatar.sd_setImage(with: URL(string: profileUrl), placeholderImage: UIImage(named: "img_profile_1"))
         textName.text = name
         if sameTop && sameBottom{
@@ -144,7 +146,8 @@ class MessageCellReceiveImage: UITableViewCell {
             imageMessage.bottomAnchor.constraint(equalTo: viewHolder.bottomAnchor, constant: 0),
             imageMessage.leadingAnchor.constraint(equalTo: viewHolder.leadingAnchor, constant: 0),
             imageMessage.trailingAnchor.constraint(equalTo: viewHolder.trailingAnchor, constant: 0),
-            imageMessage.heightAnchor.constraint(lessThanOrEqualToConstant: Utils.screenSize.width*0.8*9/18),
+            imageMessage.widthAnchor.constraint(equalToConstant: Utils.screenSize.width*0.8),
+            imageMessage.heightAnchor.constraint(equalToConstant: Utils.screenSize.width*0.8*9/16),
         ])
         
         addSubview(textName)
