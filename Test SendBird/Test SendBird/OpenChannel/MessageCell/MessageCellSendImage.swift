@@ -13,24 +13,24 @@ class MessageCellSendImage: UITableViewCell {
     //MARK: - ui components
     lazy var viewHolder: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .white
         view.layer.cornerRadius = 15
+        view.clipsToBounds = true
         view.crTopLeft = true
         view.crBottomLeft = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    var textMessage: UILabel = {
-        let view = UILabel()
-        view.font = .systemFont(ofSize: 17.0)
-        view.numberOfLines = 0
-        view.textColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     var imageAvatar: UIImageView = {
         let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    var imageMessage: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleToFill
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -51,8 +51,8 @@ class MessageCellSendImage: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(message: String, sameTop: Bool, sameBottom: Bool){
-        textMessage.text = message
+    func configure(imageURL: URL, sameTop: Bool, sameBottom: Bool){
+        imageMessage.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "img_placeholder"))
         if sameTop && sameBottom{
             messagePosition = .mid
         }else if !sameTop && !sameBottom{
@@ -95,19 +95,19 @@ class MessageCellSendImage: UITableViewCell {
         NSLayoutConstraint.activate([
             topConstraint!,
             bottomConstraint!,
-            viewHolder.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 50),
+            viewHolder.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: Utils.screenSize.width*0.2),
             viewHolder.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
         ])
         
-        viewHolder.addSubview(textMessage)
+        viewHolder.addSubview(imageMessage)
         
         NSLayoutConstraint.activate([
-            textMessage.topAnchor.constraint(equalTo: viewHolder.topAnchor, constant: 8),
-            textMessage.bottomAnchor.constraint(equalTo: viewHolder.bottomAnchor, constant: -8),
-            textMessage.leadingAnchor.constraint(equalTo: viewHolder.leadingAnchor, constant: 10),
-            textMessage.trailingAnchor.constraint(equalTo: viewHolder.trailingAnchor, constant: -10),
+            imageMessage.topAnchor.constraint(equalTo: viewHolder.topAnchor, constant: 0),
+            imageMessage.bottomAnchor.constraint(equalTo: viewHolder.bottomAnchor, constant: 0),
+            imageMessage.leadingAnchor.constraint(equalTo: viewHolder.leadingAnchor, constant: 0),
+            imageMessage.trailingAnchor.constraint(equalTo: viewHolder.trailingAnchor, constant: 0),
+            imageMessage.heightAnchor.constraint(lessThanOrEqualToConstant: Utils.screenSize.width*0.8*9/18),
         ])
-        
     }
 
 }

@@ -110,5 +110,31 @@ class SBManager{
             })
         }
     }
+    
+    func sendImageMessage(_ openChannel: SBDOpenChannel, image: UIImage, completionHandler: ((SBDFileMessage?, String?) -> Void)?){
+        let imageData = image.sd_imageData(as: .JPEG)!
+        let fileMessageParams = SBDFileMessageParams(file: imageData)!
+        fileMessageParams.fileName = "test"
+        fileMessageParams.mimeType = "image/jpeg"
+        fileMessageParams.fileSize = UInt(imageData.count)
+        fileMessageParams.thumbnailSizes = nil
+        fileMessageParams.data = nil
+        fileMessageParams.customType = nil
+        openChannel.sendFileMessage(with: fileMessageParams, progressHandler: {(bytesSent, totalBytesSent, totalBytesExpectedToSend) in
+            DispatchQueue.main.async {
+                
+            }
+        }, completionHandler: {(fileMessage, error) in
+            guard let fileMessage = fileMessage else{
+                DispatchQueue.main.async {
+                    completionHandler?(nil, "Error to read message string")
+                }
+                return
+            }
+            DispatchQueue.main.async {
+                completionHandler?(fileMessage, nil)
+            }
+        })
+    }
 }
 

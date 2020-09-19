@@ -89,7 +89,7 @@ class MessageCellSend: UITableViewCell {
         NSLayoutConstraint.activate([
             topConstraint!,
             bottomConstraint!,
-            viewHolder.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 50),
+            viewHolder.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: Utils.screenSize.width*0.2),
             viewHolder.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
         ])
         

@@ -15,8 +15,12 @@ class ChatVC: UIViewController {
     lazy var messageTableView: UITableView = {
         let view = UITableView()
         view.separatorStyle = .none
+        view.showsHorizontalScrollIndicator = false
+        view.showsVerticalScrollIndicator = false
         view.registerClass(cellType: MessageCellSend.self)
         view.registerClass(cellType: MessageCellReceive.self)
+        view.registerClass(cellType: MessageCellSendImage.self)
+        view.registerClass(cellType: MessageCellReceiveImage.self)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -53,6 +57,8 @@ class ChatVC: UIViewController {
         let view = UIButton()
         view.setImage(UIImage(systemName: "person.crop.square.fill"), for: .normal)
         view.tintColor = .systemBlue
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(buttonImageTapped))
+        view.addGestureRecognizer(tapGesture)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -91,6 +97,13 @@ class ChatVC: UIViewController {
         return view
     }()
     
+    var imagePickerVC: UIImagePickerController = {
+        let vc = UIImagePickerController()
+        vc.sourceType = .savedPhotosAlbum
+        vc.allowsEditing = false
+        return vc
+    }()
+    
     //MARK: - data & state
     private let openChannel: SBDOpenChannel
     private var messageData: [SBDBaseMessage] = []
@@ -114,7 +127,6 @@ class ChatVC: UIViewController {
     }
     
     //MARK: - applifecycles
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         SBDMain.add(self, identifier: self.description)
@@ -152,6 +164,21 @@ class ChatVC: UIViewController {
                 self.buttonSend.isEnabled = false
                 self.chatTextFieldExpaned = false
             }
+        }
+    }
+    
+    private func sendImageMessage(image: UIImage){
+        progressHub.show()
+        SBManager.shared.sendImageMessage(openChannel, image: image) { (imageMessage, errorString) in
+            progressHub.hide()
+            guard let imageMessage = imageMessage else {
+                chatAlert.showBasic(title: "Error!", message: "Unable to send image! Please try again!", viewController: self)
+                return
+            }
+            self.addMessage(message: imageMessage)
+            self.textFieldChat.text = ""
+            self.buttonSend.isEnabled = false
+            self.chatTextFieldExpaned = false
         }
     }
     
@@ -213,6 +240,7 @@ extension ChatVC{
         title = openChannel.name
         view.backgroundColor = .white
         navigationController?.title = "Open"
+        imagePickerVC.delegate = self
         let settingOpenChannelBarButton = UIBarButtonItem(image: UIImage(systemName: "exclamationmark.circle.fill"), style: .plain, target: self, action: #selector(self.buttonSettingOpenChannelTapped))
         self.navigationItem.rightBarButtonItem = settingOpenChannelBarButton
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
@@ -359,6 +387,31 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource{
                 }
             }
         }
+        else if let fileMessage = self.messageData[indexPath.row] as? SBDFileMessage {
+            guard let sender = fileMessage.sender else { return cell }
+            guard let currentUser = SBDMain.getCurrentUser() else { return cell }
+            if sender.userId == currentUser.userId{
+                let imageFileMessageCell = tableView.dequeueReusableCell(with: MessageCellSendImage.self, for: indexPath)
+                imageFileMessageCell.configure(
+                    imageURL: URL(string: fileMessage.url)!,
+                    sameTop: messageData.count > 1 && indexPath.row > 0 && (messageData[indexPath.row - 1].sender?.userId == fileMessage.sender?.userId),
+                    sameBottom: indexPath.row < messageData.count - 1 && (messageData[indexPath.row + 1].sender?.userId == fileMessage.sender?.userId)
+                )
+                cell = imageFileMessageCell
+            }
+            else {
+                let imageFileMessageCell = tableView.dequeueReusableCell(with: MessageCellReceiveImage.self, for: indexPath)
+                imageFileMessageCell.configure(
+                    name: sender.nickname ?? "",
+                    profileUrl: sender.profileUrl ?? "",
+                    imageURL: URL(string: fileMessage.url)!,
+                    roleType: .user,
+                    sameTop: messageData.count > 1 && indexPath.row > 0 && (messageData[indexPath.row - 1].sender?.userId == fileMessage.sender?.userId),
+                    sameBottom: indexPath.row < messageData.count - 1 && (messageData[indexPath.row + 1].sender?.userId == fileMessage.sender?.userId)
+                )
+                cell = imageFileMessageCell
+            }
+        }
         return cell
     }
     
@@ -377,16 +430,38 @@ extension ChatVC: SBDChannelDelegate{
     }
 }
 
+extension ChatVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.dismiss(animated: true) { [weak self] in
+            if let image = info[UIImagePickerController.InfoKey.originalImage]{
+                self?.sendImageMessage(image: image as! UIImage)
+            }else{
+                chatAlert.showBasic(title: "Error!", message: "Unable to pick image", viewController: self!)
+            }
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
+
 //MARK: - actions
 extension ChatVC{
     @objc func buttonCancelTapped(){
         self.navigationController?.popViewController(animated: true)
     }
+    
     @objc func buttonExpandChatTapped(){
         chatTextFieldExpaned = false
     }
+    
     @objc func buttonSettingOpenChannelTapped(){
         print("setting tapped")
+    }
+    
+    @objc func buttonImageTapped(){
+        self.present(self.imagePickerVC, animated: true, completion: nil)
     }
     
     @objc func backBarButtonTapped(){

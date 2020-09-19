@@ -81,6 +81,10 @@ class Utils{
         
         return (height: keyboardFrameBegin, duration: duration, curve: animationCurve)
     }
+    
+    static var screenSize: CGSize = {
+        UIScreen.main.bounds.size
+    }()
 }
 
 struct Constant{

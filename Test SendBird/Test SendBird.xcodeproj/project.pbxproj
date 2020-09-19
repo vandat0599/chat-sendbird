@@ -28,6 +28,8 @@
 		CE33CD25250E766400BD73BC /* OpenChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CD24250E766400BD73BC /* OpenChannelVC.swift */; };
 		CE33CD29250E89E600BD73BC /* SBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CD28250E89E600BD73BC /* SBManager.swift */; };
 		CE33CD2D250E9AE700BD73BC /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33CD2C250E9AE700BD73BC /* ChatVC.swift */; };
+		CE6599A72516028B00EFCC5B /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6599A62516028B00EFCC5B /* UIImage+.swift */; };
+		CE6599A9251602BC00EFCC5B /* Numeric+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6599A8251602BC00EFCC5B /* Numeric+.swift */; };
 		CE88A7F0250F1E6600F5CCC5 /* CustomSBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7EF250F1E6600F5CCC5 /* CustomSBUser.swift */; };
 		CE88A7F2250F553300F5CCC5 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7F1250F553300F5CCC5 /* UITextField+.swift */; };
 		CE88A7F6250F76FF00F5CCC5 /* MessageCellReceive.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88A7F5250F76FF00F5CCC5 /* MessageCellReceive.swift */; };
@@ -59,6 +61,8 @@
 		CE33CD24250E766400BD73BC /* OpenChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelVC.swift; sourceTree = "<group>"; };
 		CE33CD28250E89E600BD73BC /* SBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBManager.swift; sourceTree = "<group>"; };
 		CE33CD2C250E9AE700BD73BC /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		CE6599A62516028B00EFCC5B /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		CE6599A8251602BC00EFCC5B /* Numeric+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+.swift"; sourceTree = "<group>"; };
 		CE88A7EF250F1E6600F5CCC5 /* CustomSBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSBUser.swift; sourceTree = "<group>"; };
 		CE88A7F1250F553300F5CCC5 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		CE88A7F5250F76FF00F5CCC5 /* MessageCellReceive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellReceive.swift; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 				CE88A7F1250F553300F5CCC5 /* UITextField+.swift */,
 				CE10BD1A2510F6C7003F50B9 /* UIView+.swift */,
 				CE10BD1C25110646003F50B9 /* UIColor+.swift */,
+				CE6599A62516028B00EFCC5B /* UIImage+.swift */,
+				CE6599A8251602BC00EFCC5B /* Numeric+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -311,6 +317,7 @@
 				CE33CD2D250E9AE700BD73BC /* ChatVC.swift in Sources */,
 				CE88A7F0250F1E6600F5CCC5 /* CustomSBUser.swift in Sources */,
 				CE33CD0B250CC91A00BD73BC /* Utils.swift in Sources */,
+				CE6599A9251602BC00EFCC5B /* Numeric+.swift in Sources */,
 				CE33CD19250CED0000BD73BC /* NSObject+.swift in Sources */,
 				CE88A7F6250F76FF00F5CCC5 /* MessageCellReceive.swift in Sources */,
 				CE33CD17250CECDE00BD73BC /* UITableView+.swift in Sources */,
@@ -327,6 +334,7 @@
 				CE10BD1B2510F6C7003F50B9 /* UIView+.swift in Sources */,
 				CE33CD29250E89E600BD73BC /* SBManager.swift in Sources */,
 				CE33CD1B250DE88400BD73BC /* UserDefaultHelper.swift in Sources */,
+				CE6599A72516028B00EFCC5B /* UIImage+.swift in Sources */,
 				CE33CCF6250CC26900BD73BC /* AppDelegate.swift in Sources */,
 				CE10BD2125112559003F50B9 /* MessageCellReceiveImage.swift in Sources */,
 			);

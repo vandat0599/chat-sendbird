@@ -137,12 +137,12 @@ class MessageCellReceive: UITableViewCell {
             imageAvatar.widthAnchor.constraint(equalToConstant: 24.0),
         ])
         
-        topConstraint = viewHolder.topAnchor.constraint(equalTo: topAnchor, constant: 5)
-        bottomConstraint = viewHolder.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5)
+        topConstraint = viewHolder.topAnchor.constraint(equalTo: topAnchor, constant: 1)
+        bottomConstraint = viewHolder.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -1)
         NSLayoutConstraint.activate([
             topConstraint!,
             bottomConstraint!,
-            viewHolder.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -50),
+            viewHolder.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -Utils.screenSize.width*0.2),
             viewHolder.leadingAnchor.constraint(equalTo: imageAvatar.trailingAnchor, constant: 10),
         ])
         
@@ -158,7 +158,7 @@ class MessageCellReceive: UITableViewCell {
         NSLayoutConstraint.activate([
             textName.leadingAnchor.constraint(equalTo: viewHolder.leadingAnchor, constant: 12),
             textName.bottomAnchor.constraint(equalTo: viewHolder.topAnchor),
-            textName.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -50),
+            textName.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -Utils.screenSize.width*0.2),
         ])
     }
 

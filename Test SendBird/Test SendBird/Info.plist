@@ -3,6 +3,10 @@
 <plist version="1.0">
 <dict>
     <key>NSPhotoLibraryUsageDescription</key>
+    <string>Need library access to upload images</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Need camera access to take pictures</string>
+    <key>NSPhotoLibraryUsageDescription</key>
         <string>$(PRODUCT_NAME) would like access to your photo library</string>
     <key>NSCameraUsageDescription</key>
         <string>$(PRODUCT_NAME) would like to use your camera</string>
