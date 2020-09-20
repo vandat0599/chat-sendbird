@@ -84,7 +84,7 @@ class MessageCellReceiveImage: UITableViewCell {
         switch messagePosition {
         case .top:
             bottomConstraint?.constant = -1
-            topConstraint?.constant = Constant.messageMargin
+            topConstraint?.constant = 20.0
             viewHolder.crTopLeft = true
             viewHolder.crBottomLeft = false
         case .mid:
@@ -97,7 +97,7 @@ class MessageCellReceiveImage: UITableViewCell {
             viewHolder.crTopLeft = false
             viewHolder.crBottomLeft = true
         case .alone:
-            topConstraint?.constant = Constant.messageMargin
+            topConstraint?.constant = 20.0
             viewHolder.crTopLeft = true
             viewHolder.crBottomLeft = true
         }
@@ -124,6 +124,7 @@ class MessageCellReceiveImage: UITableViewCell {
         selectionStyle = .none
         addSubview(imageAvatar)
         addSubview(viewHolder)
+        viewHolder.addSubview(imageMessage)
         NSLayoutConstraint.activate([
             imageAvatar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             imageAvatar.bottomAnchor.constraint(equalTo: viewHolder.bottomAnchor, constant: 0),
@@ -136,16 +137,15 @@ class MessageCellReceiveImage: UITableViewCell {
         NSLayoutConstraint.activate([
             topConstraint!,
             bottomConstraint!,
-            viewHolder.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -Utils.screenSize.width*0.2),
+            viewHolder.trailingAnchor.constraint(lessThanOrEqualTo: imageMessage.trailingAnchor, constant: 0),
             viewHolder.leadingAnchor.constraint(equalTo: imageAvatar.trailingAnchor, constant: 10),
         ])
         
-        viewHolder.addSubview(imageMessage)
+        
         NSLayoutConstraint.activate([
             imageMessage.topAnchor.constraint(equalTo: viewHolder.topAnchor, constant: 0),
             imageMessage.bottomAnchor.constraint(equalTo: viewHolder.bottomAnchor, constant: 0),
             imageMessage.leadingAnchor.constraint(equalTo: viewHolder.leadingAnchor, constant: 0),
-            imageMessage.trailingAnchor.constraint(equalTo: viewHolder.trailingAnchor, constant: 0),
             imageMessage.widthAnchor.constraint(equalToConstant: Utils.screenSize.width*0.8),
             imageMessage.heightAnchor.constraint(equalToConstant: Utils.screenSize.width*0.8*9/16),
         ])

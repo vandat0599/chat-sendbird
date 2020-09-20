@@ -12,7 +12,7 @@ class ImageVC: UIViewController {
     
     lazy var imageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(color: .black)
+        view.image = UIImage(color: .greyMessage)
         view.contentMode = .scaleAspectFit
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -22,7 +22,7 @@ class ImageVC: UIViewController {
         let view = UIButton()
         view.setTitle("", for: .normal)
         view.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
-        view.tintColor = .white
+        view.tintColor = .black
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(buttonCloseTapped))
         view.addGestureRecognizer(tapGesture)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +45,7 @@ class ImageVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
+        view.backgroundColor = .white
         view.addSubview(imageView)
         view.addSubview(buttonClose)
         NSLayoutConstraint.activate([
@@ -54,8 +54,8 @@ class ImageVC: UIViewController {
             imageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             imageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
             
-            buttonClose.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0.0),
-            buttonClose.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0.0),
+            buttonClose.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8.0),
+            buttonClose.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor, constant: 0.0),
         ])
         imageView.image = image
     }

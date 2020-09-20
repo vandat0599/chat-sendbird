@@ -135,16 +135,6 @@ class ChatVC: UIViewController {
         layoutChatSendView()
         layoutChatTableView()
         loadPreviousMessage()
-        transition.dismissCompletion = { [weak self] in
-          guard
-            let selectedIndexPathCell = self?.messageTableView.indexPathForSelectedRow,
-            let _ = self?.messageTableView.cellForRow(at: selectedIndexPathCell)
-              as? MessageCellSendImage ?? self?.messageTableView.cellForRow(at: selectedIndexPathCell)
-              as? MessageCellReceiveImage
-            else {
-              return
-          }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -485,14 +475,28 @@ extension ChatVC: UIViewControllerTransitioningDelegate{
           else {
             return nil
         }
-
+        
+        let screenWidth = Utils.screenSize.width
+        
         transition.originFrame = selectedCellSuperview.convert(selectedCell.frame, to: nil)
-        transition.originFrame = CGRect(
-          x: transition.originFrame.origin.x + 20,
-          y: transition.originFrame.origin.y + 20,
-          width: transition.originFrame.size.width - 40,
-          height: transition.originFrame.size.height - 40
-        )
+        
+        if selectedCell is MessageCellSendImage {
+            let spaceTop: CGFloat = (selectedCell as? MessageCellSendImage)?.messagePosition == MessagePosition.top ? 20.0 : 0.0
+            transition.originFrame = CGRect(
+                x: transition.originFrame.origin.x + screenWidth*0.2 - 15,
+                y: transition.originFrame.origin.y + spaceTop,
+                width: screenWidth*0.8,
+                height: screenWidth*0.8*9/16
+            )
+        } else {
+            let spaceTop: CGFloat = (selectedCell as? MessageCellReceiveImage)?.messagePosition == MessagePosition.top ? 20.0 : 0.0
+            transition.originFrame = CGRect(
+                x: transition.originFrame.origin.x + 20 + 24,
+                y: transition.originFrame.origin.y + spaceTop,
+                width: screenWidth*0.8,
+                height: screenWidth*0.8*9/16
+            )
+        }
 
         transition.presenting = true
         return transition

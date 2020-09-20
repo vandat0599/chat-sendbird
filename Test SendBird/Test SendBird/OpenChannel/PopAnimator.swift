@@ -37,8 +37,12 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
           recipeView.center = CGPoint(
             x: initialFrame.midX,
             y: initialFrame.midY)
+            recipeView.clipsToBounds = true
             recipeView.alpha = 0.0
         }
+        
+        recipeView.layer.cornerRadius = presenting ? 20.0 : 0.0
+        recipeView.layer.masksToBounds = true
 
         
         containerView.addSubview(toView)
@@ -50,6 +54,7 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             recipeView.transform = self.presenting ? .identity : scaleTransform
             recipeView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
             recipeView.alpha = self.presenting ? 1.0 : 0.0
+            recipeView.layer.cornerRadius = !self.presenting ? 20.0 : 0.0
           }, completion: { _ in
             if !self.presenting {
               self.dismissCompletion?()
