@@ -10,5 +10,6 @@ target 'Test SendBird' do
   pod 'KRProgressHUD'
   pod 'SendBirdUIKit'
   pod 'SDWebImage'
-
+  pod 'Hero'
+  
 end

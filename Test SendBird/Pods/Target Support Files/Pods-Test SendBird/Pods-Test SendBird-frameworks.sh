@@ -161,6 +161,7 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/Hero/Hero.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/KRActivityIndicatorView/KRActivityIndicatorView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/KRProgressHUD/KRProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
@@ -170,6 +171,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_dsym "${PODS_ROOT}/SendBirdUIKit/SendBirdUIKit.framework.dSYM"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/Hero/Hero.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/KRActivityIndicatorView/KRActivityIndicatorView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/KRProgressHUD/KRProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"

@@ -1,4 +1,5 @@
 PODS:
+  - Hero (1.5.0)
   - KRActivityIndicatorView (3.0.5)
   - KRProgressHUD (3.4.5):
     - KRActivityIndicatorView (= 3.0.5)
@@ -10,6 +11,7 @@ PODS:
     - SendBirdSDK (~> 3.0.200)
 
 DEPENDENCIES:
+  - Hero
   - KRProgressHUD
   - SDWebImage
   - SendBirdSDK
@@ -17,6 +19,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Hero
     - KRActivityIndicatorView
     - KRProgressHUD
     - SDWebImage
@@ -24,12 +27,13 @@ SPEC REPOS:
     - SendBirdUIKit
 
 SPEC CHECKSUMS:
+  Hero: b7385b75e7259da62f4f85462f59a5082d66b058
   KRActivityIndicatorView: 912bc0413d98340f384b12a4e1e6aa8f42fb377d
   KRProgressHUD: df4cdc3a1baf708d4276a089ee34d133fa9a6f3e
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
   SendBirdSDK: 3a949f75cb359c0996f23cef3273db0bfb2f26e6
   SendBirdUIKit: dadeee0fa38f0c78253b1024f9820e507ceaa4a3
 
-PODFILE CHECKSUM: f86c891c7dfd1d76155b84d1e86da0a5923d4e86
+PODFILE CHECKSUM: 147e55fc871890977810ca8bedfbe6ff1ced843e
 
 COCOAPODS: 1.8.4

@@ -19,3 +19,7 @@ enum MessageReceiveRole{
 enum MessageReceiveType{
     case text, image, file, url
 }
+
+class MessageConstant{
+    static var heroImageId = "messageImage"
+}

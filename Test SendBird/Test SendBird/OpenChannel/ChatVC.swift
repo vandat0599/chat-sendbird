@@ -8,6 +8,7 @@
 
 import UIKit
 import SendBirdSDK
+import Hero
 
 class ChatVC: UIViewController {
 
@@ -115,7 +116,6 @@ class ChatVC: UIViewController {
             animateExpandChatTextField(expand: chatTextFieldExpaned)
         }
     }
-    let transition = PopAnimator()
     
     //MARK: - init
     init?(openChannel: SBDOpenChannel) {
@@ -351,12 +351,17 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource{
         }
         var vc = UIViewController()
         if selectedCell is MessageCellSendImage{
-            vc = ImageVC(image: ((selectedCell as! MessageCellSendImage).imageMessage.image ?? UIImage(color: .black))!)!
+            if let selectedCell = selectedCell as? MessageCellSendImage {
+                selectedCell.imageMessage.heroID = MessageConstant.heroImageId + String(indexPath.row)
+                vc = ImageVC(image: selectedCell.imageMessage.image!, tag: indexPath.row)!
+            }
         }
         else {
-            vc = ImageVC(image: ((selectedCell as! MessageCellReceiveImage).imageMessage.image ?? UIImage(color: .black))!)!
+            if let selectedCell = selectedCell as? MessageCellReceiveImage {
+                selectedCell.imageMessage.heroID = MessageConstant.heroImageId + String(indexPath.row)
+                vc = ImageVC(image: selectedCell.imageMessage.image!, tag: indexPath.row)!
+            }
         }
-        vc.transitioningDelegate = self
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
@@ -430,6 +435,7 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource{
                 cell = imageFileMessageCell
             }
         }
+        cell.tag = indexPath.row
         return cell
     }
     
@@ -461,50 +467,6 @@ extension ChatVC: UINavigationControllerDelegate, UIImagePickerControllerDelegat
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
-    }
-}
-
-extension ChatVC: UIViewControllerTransitioningDelegate{
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard
-          let selectedIndexPathCell = messageTableView.indexPathForSelectedRow,
-          let selectedCell = messageTableView.cellForRow(at: selectedIndexPathCell)
-            as? MessageCellSendImage ?? messageTableView.cellForRow(at: selectedIndexPathCell)
-            as? MessageCellReceiveImage,
-          let selectedCellSuperview = selectedCell.superview
-          else {
-            return nil
-        }
-        
-        let screenWidth = Utils.screenSize.width
-        
-        transition.originFrame = selectedCellSuperview.convert(selectedCell.frame, to: nil)
-        
-        if selectedCell is MessageCellSendImage {
-            let spaceTop: CGFloat = (selectedCell as? MessageCellSendImage)?.messagePosition == MessagePosition.top ? 20.0 : 0.0
-            transition.originFrame = CGRect(
-                x: transition.originFrame.origin.x + screenWidth*0.2 - 15,
-                y: transition.originFrame.origin.y + spaceTop,
-                width: screenWidth*0.8,
-                height: screenWidth*0.8*9/16
-            )
-        } else {
-            let spaceTop: CGFloat = (selectedCell as? MessageCellReceiveImage)?.messagePosition == MessagePosition.top ? 20.0 : 0.0
-            transition.originFrame = CGRect(
-                x: transition.originFrame.origin.x + 20 + 24,
-                y: transition.originFrame.origin.y + spaceTop,
-                width: screenWidth*0.8,
-                height: screenWidth*0.8*9/16
-            )
-        }
-
-        transition.presenting = true
-        return transition
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.presenting = false
-        return transition
     }
 }
 

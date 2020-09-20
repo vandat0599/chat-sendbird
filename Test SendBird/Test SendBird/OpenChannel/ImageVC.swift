@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Hero
 
 class ImageVC: UIViewController {
     
@@ -14,6 +15,7 @@ class ImageVC: UIViewController {
         let view = UIImageView()
         view.image = UIImage(color: .greyMessage)
         view.contentMode = .scaleAspectFit
+        view.heroID = MessageConstant.heroImageId + String(tag)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -31,12 +33,14 @@ class ImageVC: UIViewController {
         return view
     }()
     
-    var image: UIImage?
+    var image: UIImage!
+    var tag: Int!
 
     //MARK: - init
-   init?(image: UIImage) {
-       self.image = image
-       super.init(nibName: nil, bundle: nil)
+    init?(image: UIImage, tag: Int) {
+        self.image = image
+        self.tag = tag
+        super.init(nibName: nil, bundle: nil)
    }
 
    required init?(coder: NSCoder) {
@@ -45,6 +49,7 @@ class ImageVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hero.isEnabled = true
         view.backgroundColor = .white
         view.addSubview(imageView)
         view.addSubview(buttonClose)

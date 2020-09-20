@@ -23,14 +23,14 @@ class MessageCellReceiveImage: UITableViewCell {
         return view
     }()
     
-    var imageMessage: UIImageView = {
+    lazy var imageMessage: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    var imageAvatar: UIImageView = {
+    lazy var imageAvatar: UIImageView = {
         let view = UIImageView()
         view.layer.masksToBounds = true
         view.layer.cornerRadius = 12.0
@@ -39,7 +39,7 @@ class MessageCellReceiveImage: UITableViewCell {
         return view
     }()
     
-    var textName: UILabel = {
+    lazy var textName: UILabel = {
         let view = UILabel()
         view.font = .systemFont(ofSize: 12)
         view.textColor = UIColor.black.withAlphaComponent(0.5)
