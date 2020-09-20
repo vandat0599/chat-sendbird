@@ -22,7 +22,7 @@ class ImageVC: UIViewController {
         let view = UIButton()
         view.setTitle("", for: .normal)
         view.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
-        view.tintColor = .black
+        view.tintColor = .systemBlue
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(buttonCloseTapped))
         view.addGestureRecognizer(tapGesture)
         view.translatesAutoresizingMaskIntoConstraints = false
